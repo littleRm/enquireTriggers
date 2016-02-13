@@ -58,11 +58,11 @@
 		
 		var media = window.matchMedia(query.mq);
 		
-		window['mq_'+mq.trigger] = media.matches;
+		window['mq_'+query.trigger] = media.matches;
 		
 		media.addListener(function(data) {
-			log('ET:'+mq.trigger,data.matches);
-			$(document).trigger('ET:'+mq.trigger,data.matches);
+			log('ET:'+query.trigger,data.matches);
+			$(document).trigger('ET:'+query.trigger,data.matches);
 		});
 		return media;
 	}
