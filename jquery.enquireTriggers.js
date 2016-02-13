@@ -13,12 +13,59 @@
 
 ;(function($) {
 	
+	var queries = [
+		{
+		 'mq'		:'(max-width: 767px)',
+		 'trigger'	:'isMobile',
+		},{
+		 'mq'		:'(min-width: 768px) and (max-width:1023px)',
+		 'trigger'	:'isTablet',
+		},{
+		 'mq'		:'(min-width: 1024px)',
+		 'trigger'	:'isDesktop',
+		},{
+		 'mq'		:'(min-width: 1200px)',
+		 'trigger'	:'isBigDesktop',
+		},{
+		 'mq'		:'(min-height: 768px)',
+		 'trigger'	:'isMinHeight',
+		},{
+		 'mq'		:'(orientation : landscape)',
+		 'trigger'	:'isLandscape',
+		},{
+		 'mq'		:'(orientation : portrait)',
+		 'trigger'	:'isPortrait',
+		}
+	];
 	
 	$.extend($.fn, {
-		enquireTriggers: function(a, b, c) {
+		enquireTriggers: function(q) {
+			
+			q = q || [];
+			queries = queries.concat(q);
+			
+			$.each(queries, function(k,v) {
+				queries[k].media = create_mq(v);
+			});	
+			
 			return true;
 		}
 	});
+	
+	var create_mq = function(query){
+		
+		query = query || {};
+		
+		var media = window.matchMedia(query.mq);
+		
+		window['mq_'+mq.trigger] = media.matches;
+		
+		media.addListener(function(data) {
+			log('ET:'+mq.trigger,data.matches);
+			$(document).trigger('ET:'+mq.trigger,data.matches);
+		});
+		return media;
+	}
 	
 	
 })(jQuery);
