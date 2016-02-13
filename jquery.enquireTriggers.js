@@ -61,7 +61,7 @@
 			var media = window.matchMedia(query.mq);
 			window['ET'+query.trigger] = media.matches;
 			$(window).load(function() {
-				$(document).trigger('ET:'+query.trigger,data.matches);
+				$(document).trigger('ET:'+query.trigger,media.matches);
 			});
 			media.addListener(function(data) {
 				log('ET:'+query.trigger,data.matches);
