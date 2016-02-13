@@ -36,7 +36,7 @@ queries = [
 
 ```javascript
 
-	$(document).on('ET:isMobile', function(matches){
+	$(document).on('ET:isMobile', function(event, matches){
 		if(matches)
 			alert("IS MOBILE!");
 		else
@@ -69,7 +69,7 @@ queries = [
 	
 	$(document).enquireTriggers(customQueries);
 
-	$(document).on('ET:is900plus', function(matches){
+	$(document).on('ET:is900plus', function(event, matches){
 		if(matches)
 			alert("IS 900px OR LARGER!");
 		else
