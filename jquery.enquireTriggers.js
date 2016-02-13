@@ -48,7 +48,7 @@
 				queries[k].media = create_mq(v);
 			});	
 			
-			return true;
+			return queries;
 		}
 	});
 	
@@ -56,16 +56,23 @@
 		
 		query = query || {};
 		
-		var media = window.matchMedia(query.mq);
-		
-		window['mq_'+query.trigger] = media.matches;
-		
-		media.addListener(function(data) {
-			log('ET:'+query.trigger,data.matches);
-			$(document).trigger('ET:'+query.trigger,data.matches);
-		});
-		return media;
+		if(!query.media){ //if media not already set
+			
+			var media = window.matchMedia(query.mq);
+			
+			window['mq_'+query.trigger] = media.matches;
+			
+			media.addListener(function(data) {
+				log('ET:'+query.trigger,data.matches);
+				$(document).trigger('ET:'+query.trigger,data.matches);
+			});
+			return media;
+		}else{
+			return query.media;
+		}
 	}
 	
 	
 })(jQuery);
+
+var mediaQueries = $(document).enquireTriggers();
