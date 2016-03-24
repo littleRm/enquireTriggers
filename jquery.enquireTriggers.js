@@ -65,8 +65,9 @@
 			});
 			media.addListener(function(data) {
 				log('ET:'+query.trigger,data.matches);
-				$(document).trigger('ET:'+query.trigger,data.matches);
 				window['ET'+query.trigger] = data.matches;
+				$(document).trigger('ET:'+query.trigger,data.matches);
+				$(document).trigger('ET:ANY');
 			});
 			
 			return media;

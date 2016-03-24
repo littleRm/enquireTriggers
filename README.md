@@ -56,6 +56,26 @@ queries = [
 
 ```
 
+###ALL/ANY Trigger:
+
+```javascript
+
+	$(document).on('ET:ALL', function(event){
+		if(ETisMobile){
+			alert("IS MOBILE!");
+			
+		else if(ETisTablet){
+			alert("IS TABLET!");
+			
+		else if(ETisDesktop){
+			alert("IS DESKTOP!");
+			
+		else if(ETisBigDesktop){
+			alert("IS BIG DESKTOP!");	
+	});
+
+```
+
 ###Add your own Media Queries
 
 ```javascript
