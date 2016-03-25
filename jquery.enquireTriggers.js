@@ -62,6 +62,7 @@
 			window['ET'+query.trigger] = media.matches;
 			$(window).load(function() {
 				$(document).trigger('ET:'+query.trigger,media.matches);
+				$(document).trigger('ET:ANY');
 			});
 			media.addListener(function(data) {
 				log('ET:'+query.trigger,data.matches);
