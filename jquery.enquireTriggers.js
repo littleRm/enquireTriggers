@@ -96,4 +96,4 @@ window.matchMedia||(window.matchMedia=function(){"use strict";var e=window.style
 	
 })(jQuery);
 
-var mediaQueries = $(document).enquireTriggers();
+var mediaQueries = jQuery(document).enquireTriggers();
